@@ -26,6 +26,10 @@ export class CategoryRestApiComponent implements OnInit {
   public click2() {
     this.getCategories2().subscribe(val => console.log(val));
   }
+  
+  public click3() {
+    this.getUser('sss', 'ddd').subscribe(val => console.log(val));
+  }
 
   public getCategories(): Observable<ICategory> {
     return this.http.get<ICategory>(this._baseApiUrl + 'api/test');
@@ -34,5 +38,10 @@ export class CategoryRestApiComponent implements OnInit {
   public getCategories2(): Observable<ICategory> {
     return this.http.get<ICategory>(this._baseApiUrl + 'test');
   }
+
+  public getUser(email: string, password: string): Observable<IUser> {
+    return this.http.post<IUser>(this._baseApiUrl + 'auth/login', { email: email, password: password });
+  }
+
 
 }

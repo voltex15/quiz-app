@@ -1,5 +1,61 @@
-<div class="toolbar" role="banner">
-    <span>{{ title }} app is running!</span>
-</div>
-
-<router-outlet></router-outlet>
+<mat-toolbar>
+    <button mat-icon-button aria-label="Menu icon" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  
+    <span>{{ title }}</span>
+    <span class="spacer"></span>
+  
+    <!-- Potem do usuniecia te buttony -->
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Add to favorite">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Share element">
+      <mat-icon>share</mat-icon>
+    </button>
+  
+  </mat-toolbar>
+  
+  <mat-drawer-container class="container" autosize>
+  
+    <!-- Wysuwane menu -->
+    <mat-drawer #drawer mode="side">
+  
+      <mat-nav-list>
+  
+        <mat-list-item [routerLink]="['expense-form']">
+          <mat-icon>dashboard</mat-icon>
+          <span>Formularz wydatków</span>
+        </mat-list-item>
+  
+        <mat-list-item [routerLink]="['income-form']">
+          <mat-icon>add</mat-icon>
+          <span>Formularz wpłat</span>
+        </mat-list-item>
+  
+        <mat-list-item [routerLink]="['schedule-form']">
+          <mat-icon>add</mat-icon>
+          <span>Dodaj harmonogram</span>
+        </mat-list-item>
+  
+        <mat-list-item [routerLink]="['serviceProvider-form']">
+          <mat-icon>add</mat-icon>
+          <span>Dodaj usługodawcę</span>
+        </mat-list-item>
+  
+        <mat-list-item [routerLink]="['task-form']">
+          <mat-icon>add</mat-icon>
+          <span>Dodaj zadanie</span>
+        </mat-list-item>
+  
+      </mat-nav-list>
+  
+    </mat-drawer>
+  
+    <div class="content" role="main">
+      <router-outlet></router-outlet>
+    </div>
+  
+  </mat-drawer-container>
+  
+  <!-- <app-footer></app-footer> -->
