@@ -17,11 +17,6 @@ export class CategoryRestApiComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //test
-    this.getUser().subscribe(response => {
-      console.log(response.token)
-      localStorage.setItem('JwtToken', JSON.stringify(response.token));
-    });
   }
 
   public click() {
@@ -38,14 +33,6 @@ export class CategoryRestApiComponent implements OnInit {
 
   public getCategories2(): Observable<ICategory> {
     return this.http.get<ICategory>(this._baseApiUrl + 'test');
-  }
-
-  public getUser(): Observable<IUser> {
-    return this.http.post<IUser>(this._baseApiUrl + 'auth/login', { email: 'test@example.com', password: '123123' });
-  }
-
-  public register(): Observable<IUser> {
-    return this.http.post<IUser>(this._baseApiUrl + 'auth/register', { 'email': 'test2@example.com', 'password': '123123' });
   }
 
 }

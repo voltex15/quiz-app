@@ -1,25 +1,31 @@
 
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { AuthRestApiComponent } from '../rest-api/auth-rest-api/auth-rest-api.component';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     
     constructor(
-        private http: HttpClient,
+        private authRestApi: AuthRestApiComponent,
         @Inject('BASE_API_URL') private _baseApiUrl: string
     ) {}
     
     login(username: string, password: string): void {
-       this.http.post(this._baseApiUrl + '/login_check', { username, password })
-            .pipe(
-                map(response => {
-                    // login successful if there's a jwt token in the response
-                    if (response) {
-                        localStorage.setItem('JwtToken', JSON.stringify(response));
-                    }
-                })
-            );
+        this.authRestApi.getUser(username, password).subscribe(response => {
+            console.log(username);
+            console.log(password);
+            console.log(response);
+            //localStorage.setItem('jwtToken', JSON.stringify(response.token));
+        });
+
+        // this.authRestApi.getUser(username, password)
+        //     .pipe(
+        //         map(response => {
+        //             if (response) {
+        //                 localStorage.setItem('jwtToken', JSON.stringify(response));
+        //                 localStorage.setItem('email', JSON.stringify(response));
+        //             }
+        //         })
+        //     );
     }
 }
