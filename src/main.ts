@@ -9,9 +9,8 @@ export function getBaseUrl() {
 }
 
 export function getBaseApiUrl() {
-  return 'http://127.0.0.1:8000/api/';
+  return 'http://127.0.0.1:8000/';
 }
-
 
 const providers = [
   { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
