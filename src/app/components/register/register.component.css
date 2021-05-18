@@ -1,0 +1,21 @@
+.main-container {
+    height: 80vh;
+    width: 200vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-icon {
+    margin-right: 8px;
+}

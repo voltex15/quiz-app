@@ -1,49 +1,60 @@
-<mat-card>
+<div class="main-container">
+
+  <mat-card>
 
     <div class="container">
       <div [hidden]="submitted">
-        <h1>Login Form</h1>
+        <h1>Logowanie</h1>
         <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-  
+
           <div class="form-group">
             <mat-form-field appearance="legacy">
               <mat-label>Email</mat-label>
+              <mat-icon matPrefix>email</mat-icon>
               <input matInput
-                     type="email"
-                     class="form-control"
-                     id="email"
-                     required
-                     [(ngModel)]="model.email"
-                     name="email"
-                     #email="ngModel">
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      required
+                      [(ngModel)]="model.email"
+                      name="email"
+                      #email="ngModel">
             </mat-form-field>
           </div>
-  
+
           <div class="form-group">
             <mat-form-field appearance="legacy">
               <mat-label>Hasło</mat-label>
+              <mat-icon matPrefix>lock</mat-icon>
               <input matInput
-                     type="password"
-                     class="form-control"
-                     id="password"
-                     required
-                     [(ngModel)]="model.password"
-                     name="password"
-                     #password="ngModel">
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      required
+                      [(ngModel)]="model.password"
+                      name="password"
+                      #password="ngModel">
             </mat-form-field>
           </div>
-  
+
           <hr />
-  
+
+          <span>Nie masz konta? <a routerLink="/register" routerLinkActive="register">Zarejestruj się</a></span>
+
+          <hr />
+
           <button mat-raised-button
+                  id="loginButton"
                   color="primary"
                   type="submit"
                   [disabled]="!loginForm.form.valid">
-            Zapisz
+            Zaloguj
           </button>
-  
+
         </form>
       </div>
     </div>
-  
+
   </mat-card>
+
+</div>

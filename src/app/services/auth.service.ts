@@ -12,10 +12,17 @@ export class AuthService {
         @Inject('BASE_API_URL') private _baseApiUrl: string
     ) {}
     
-    login(username: string, password: string): void {
+    public login(username: string, password: string): void {
         this.getUser(username, password).subscribe(response => {
             localStorage.setItem('jwtToken', JSON.stringify(response.token));
             localStorage.setItem('username', JSON.stringify(response.email));
+        });
+    }
+
+    public register(username: string, password: string): void {
+        this.getUser(username, password).subscribe(response => {
+            console.log(response.email);
+            console.log(response.token);
         });
     }
 
@@ -23,8 +30,8 @@ export class AuthService {
         return this.http.post<IUser>(this._baseApiUrl + 'auth/login', { email: email, password: password });
     }
     
-    public register(): Observable<IUser> {
-        return this.http.post<IUser>(this._baseApiUrl + 'auth/register', { email: 'test@example.com', password: '123123' });
+    public postUser(email: string, password: string): Observable<IUser> {
+        return this.http.post<IUser>(this._baseApiUrl + 'auth/register', { email: email, password: password });
     }
     
 }
