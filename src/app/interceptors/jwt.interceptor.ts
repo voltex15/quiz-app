@@ -12,6 +12,7 @@ export class JwtInterceptor implements HttpInterceptor {
         console.log(jwtToken);
 
         if (jwtToken) {
+            console.log(jwtToken);
             request = request.clone({
                 setHeaders: {
                     Authorization: `${jwtToken}`

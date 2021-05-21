@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -18,7 +16,8 @@ export class LoginComponent implements OnInit {
     public submitted: boolean = false; 
     
     constructor(
-        private authService: AuthService
+        private authService: AuthService,
+        private router: Router
     ) { }
     
     onSubmit() {
@@ -27,6 +26,9 @@ export class LoginComponent implements OnInit {
     }
     
     ngOnInit(): void {
+        if (this.authService.isLoggedIn() === true) {
+            this.router.navigate(['/categoryRest']);
+        }
     }
 
 }
