@@ -37,13 +37,21 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AuthService } from './services/auth.service';
 import { LogoutComponent } from './components/logout/logout.component';
+import { HomeComponent } from './components/home/home.component';
+import { CategoryComponent } from './components/category/category.component';
+import { CategoryListComponent } from './components/lists/category-list/category-list.component';
+import { CategoryFormComponent } from './components/forms/category-form/category-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    HomeComponent,
+    CategoryComponent,
+    CategoryListComponent,
+    CategoryFormComponent
   ],
   imports: [
     BrowserModule,
